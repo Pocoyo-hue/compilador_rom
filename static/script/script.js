@@ -86,55 +86,55 @@ function hex_as_byte(){
 function click_f(f,operando){
     let x;
     switch (f){
-        case 0:
+        case "0":
             x = 0;
             insert_bin(x);
             break;
-        case 1:
+        case "1":
             x = 1+""+operando;
             insert_bin(x);
             break;
-        case 2:
+        case "2":
             x = 2+""+operando;
             insert_bin(x);
             break;
-        case 3:
+        case "3":
             x = 3+""+operando;
             insert_bin(x);
             break;
-        case 4:
+        case "4":
             x = 4;
             insert_bin(x);
             break;
-        case 5:
+        case "5":
             x = 5;
             insert_bin(x);
             break;
-        case 6:
+        case "6":
             x = 6;
             insert_bin(x);
             break;
-        case 7:
+        case "7":
             x = 7;
             insert_bin(x);
             break;
-        case 8:
+        case "8":
             x = 8;
             insert_bin(x);
             break;
-        case 9:
+        case "9":
             x = 9;
             insert_bin(x);
             break;
-        case 10:
+        case "C":
             x = "C"+""+operando;
             insert_bin(x);
             break;
-        case 11:
+        case "D":
             x = "D"+""+operando;
             insert_bin(x);
             break;
-        case 12:
+        case "E":
             x = "E"+""+operando;
             insert_bin(x);
             break;
@@ -151,8 +151,13 @@ function create_bin(){
     console.log(a);
     name = prompt("¿Como desea llamar a su archivo?");
     name = name+'.bin';
-    const archivo = new Blob([a], { type: 'text/plain' });
-    saveAs(archivo, name);
+    const archivo = new Blob([a], { type: 'text/plain;charset=ANSI' });
+    let url = URL.createObjectURL(archivo);
+    let link = document.createElement("a");
+    link.href = url;
+    link.download = name;
+    document.body.appendChild(link);
+    link.click();
     alert("Archivo descargado");
 }
 
