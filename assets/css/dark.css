@@ -1,0 +1,25 @@
+body.dark header {
+  background: #222222;
+  -webkit-box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.16);
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.16);
+}
+body.dark nav ul {
+  background: #222222;
+  -webkit-box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.16);
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.16);
+}
+body.dark .container-all{
+    background: #313131;
+    -webkit-box-shadow: 10px 10px 20px rgba(255, 0, 0, 0.16);
+    box-shadow: 10px 10px 20px rgba(255, 0, 0, 0.16);
+    color: rgb(218, 220, 221);
+}
+
+
+
+/* portafolio */
+body.dark .container-portafolio{
+  margin-top: 80px;
+  background-color: rgb(50, 51, 59);
+}
+/* portafolio */

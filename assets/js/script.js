@@ -3,6 +3,7 @@ let b = [];
 
 function insert_bin(num){
     bin.push(num);
+    console.log("a");
 }
 
 function delete_bin(id){
@@ -11,7 +12,8 @@ function delete_bin(id){
 
 function list_bin(){
     let y;
-    let o; 
+    let o;
+    let select = document.getElementById("instrucciones");
     for(let i = 0; i < bin.length; i++){
         y = bin[i].toString();
         o = y;
@@ -83,58 +85,78 @@ function hex_as_byte(){
     console.log(b);
 }
 
-function click_f(f,operando){
+function hex_as_byte(){
+    for(let i = 0; i<bin.length; i++){
+        if(bin[i]!==null){
+            b.push(parseInt(bin[i].substring(0, 2), 16));
+        }
+    }
+    console.log(b);
+}
+
+function click_f(f){
     let x;
+    let operando;
     switch (f){
         case "0":
             x = 0;
             insert_bin(x);
             break;
         case "1":
+            operando = prompt("Ingrese el operando 0-9");
             x = 1+""+operando;
+            parseInt(x);
             insert_bin(x);
             break;
         case "2":
+            operando = prompt("Ingrese el operando 0-9");
             x = 2+""+operando;
+            parseInt(x);
             insert_bin(x);
             break;
         case "3":
+            operando = prompt("Ingrese el operando 0-9");
             x = 3+""+operando;
+            parseInt(x);
             insert_bin(x);
             break;
         case "4":
-            x = 4;
+            x = 4+""+0;
+            parseInt(x);
             insert_bin(x);
             break;
         case "5":
-            x = 5;
+            x = 5+""+0;
             insert_bin(x);
             break;
         case "6":
-            x = 6;
+            x = 6+""+0;
             insert_bin(x);
             break;
         case "7":
-            x = 7;
+            x = 7+""+0;
             insert_bin(x);
             break;
         case "8":
-            x = 8;
+            x = 8+""+0
             insert_bin(x);
             break;
         case "9":
-            x = 9;
+            x = 9+""+0;
             insert_bin(x);
             break;
         case "C":
+            operando = prompt("Ingrese el operando 0-9");
             x = "C"+""+operando;
             insert_bin(x);
             break;
         case "D":
+            operando = prompt("Ingrese el operando 0-9");
             x = "D"+""+operando;
             insert_bin(x);
             break;
         case "E":
+            operando = prompt("Ingrese el operando 0-9");
             x = "E"+""+operando;
             insert_bin(x);
             break;

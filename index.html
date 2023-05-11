@@ -1,16 +1,213 @@
 <!DOCTYPE html>
-<html>
+<html lang="Es">
+
 <head>
-	<title></title>
-	<meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <script src="./static/script/FileSaver.js"></script>
-    <script src="./static/script/script.js"></script>
-    
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Steve</title>
+  <link rel="stylesheet" href="assets/css/steve.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/dark.css">
+  <script src="assets/js/script.js"></script>
+  <script src="https://kit.fontawesome.com/0255cf79ea.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
-    <header>
-        <h1>Compilador</h1>
-    </header>
+  <header>
+    <div class="header-content">
+      <div class="logo">
+        <a href="index.html">
+          <img class="logo_img" src="assets/img/Inicio_Blanco.png" alt="" />
+        </a>
+        <div class="logo_nombre">
+          <h1>
+            <a href="index.html"> S[<b>T</b>]CH</a>
+          </h1>
+        </div>
+      </div>
+      <div class="menu" id="show-menu">
+        <nav>
+          <ul>
+            <li>
+              <a href="index.html"> <i class="fas fa-home"></i>Examen Parcial 2023 Arquitectura del computador</a>
+            </li>
+            <div class="btn_header">
+              <input type="button" class="btn_header_button2" onclick="create_bin()" value="Crear archivo" />
+              <button class="switch" id="switch">
+                <span><i class="fas fa-sun"></i></span>
+                <span><i class="fas fa-moon"></i></span>
+              </button>
+            </div>
+          </ul>
+
+        </nav>
+      </div>
+
+    </div>
+    <div id="icon-menu">
+      <i class="fas fa-bars"></i>
+    </div>
+  </header>
+
+  <div class="container-all" id="move-content">
+    <div class="Fondo">
+      <div class="container-aside">
+        <aside>
+          <h2>Información adicional</h2>
+          <table class="tabla">
+            <thead>
+              <tr>
+                <th>BIN</th>
+                <th>HEX</th>
+                <th>Nemónico</th>
+                <th>Descripción</th>
+                <th>Observaciones</th>
+                <th>Accion</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>0</td>
+                <td>0 </td>
+                <td>NOT</td>
+                <td>No hace nada, sirve para hacer delays</td>
+                <td>Ignora el operando</td>
+                <td><button class="btn" onclick="click_f('0')">Seleccionar</button></td>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>1</td>
+                <td>NAND,n</td>
+                <td>NAND entre operando y el acumulador</td>
+                <td></td>
+                <td><button class="btn" onclick="click_f('1')">Seleccionar</button></td>
+              </tr>
+              <tr>
+                <td>10</td>
+                <td>2</td>
+                <td>ADD,n</td>
+                <td>Suma el operando al acumulador</td>
+                <td></td>
+                <td><button class="btn" onclick="click_f('2')">Seleccionar</button></td>
+              </tr>
+              <tr>
+                <td>11</td>
+                <td>3</td>
+                <td>LDA,n</td>
+                <td>Carga el operando en el acumulador</td>
+                <td></td>
+                <td><button class="btn" onclick="click_f('3')">Seleccionar</button></td>
+              </tr>
+              <tr>
+                <td>100</td>
+                <td>4</td>
+                <td>OUTA</td>
+                <td>Coloca el valor del acumulador en el puerto de salida A</td>
+                <td>Ignora el operando</td>
+                <td><button class="btn" onclick="click_f('4')">Seleccionar</button></td>
+              </tr>
+              <tr>
+                <td>101</td>
+                <td>5</td>
+                <td>OUTB</td>
+                <td>Coloca el valor del acumulador en el puerto de salida B</td>
+                <td>Ignora el operando</td>
+                <td><button class="btn" onclick="click_f('5')">Seleccionar</button></td>
+              </tr>
+              <tr>
+                <td>110</td>
+                <td>6</td>
+                <td>INA</td>
+                <td>Carga el valor del puerto de entrada A en el acumulador</td>
+                <td>Ignora el operando</td>
+                <td><button class="btn" onclick="click_f('6')">Seleccionar</button></td>
+              </tr>
+              <tr>
+                <td>111</td>
+                <td>7</td>
+                <td>RD</td>
+                <td>Coloca el valor del acumulador en el Registro D (dirección)</td>
+                <td>Ignora el operando / Se usa para poder a acceder a 255 byte de la ROM (4 bits bajos del Registro D + 4 bits altos del operando)</td>
+                <td><button class="btn"onclick="click_f('7')">Seleccionar</button></td>
+              </tr>
+              <tr>
+                <td>1000</td>
+                <td>8</td>
+                <td>RA</td>
+                <td>Coloca el valor del acumulador en el Registro A</td>
+                <td>Ignora el operando</td>
+                <td><button class="btn" onclick="click_f('8')">Seleccionar</button></td>
+              </tr>
+              <tr>
+                <td>1001</td>
+                <td>9</td>
+                <td>LDRA</td>
+                <td>Carga el valor de Registro A en el acumulador</td>
+                <td>Ignora el operando</td>
+                <td><button class="btn" onclick="click_f('9')">Seleccionar</button></td>
+              </tr>
+              <tr>
+                <td>1010</td>
+                <td>A</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><button class="btn" >Seleccionar</button></td>
+              </tr>
+              <tr>
+                <td>1011</td>
+                <td>B</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><button class="btn">Seleccionar</button></td>
+              </tr>
+              <tr>
+                <td>1100</td>
+                <td>C</td>
+                <td>JPI,n</td>
+                <td>Salto incondicional a la posición RD+Operando</td>
+                <td></td>
+                <td><button class="btn" onclick="click_f('C')">Seleccionar</button></td>
+              </tr>
+              <tr>
+                <td>1101</td>
+                <td>D</td>
+                <td>JPC,n</td>
+                <td>Salto condicional (CARRY) a la posición RD+Operando</td>
+                <td></td>
+                <td><button class="btn" onclick="click_f('D')">Seleccionar</button></td>
+              </tr>
+              <tr>
+                <td>1110</td>
+                <td>E</td>
+                <td>JPZ,n</td>
+                <td>Salto condicional (ZERO) a la posición RD+Operando</td>
+                <td></td>
+                <td><button class="btn" onclick="click_f('E')">Seleccionar</button></td>
+              </tr>
+              <tr>
+                <td>1111</td>
+                <td>F</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><button class="btn" >Seleccionar</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </aside>
+      </div>
+    </div>
+  </div>
+  <div id="instrucciones">
+
+  </div>
+  <footer>
+    <p id="data" style="visibility: hidden;"></p>
+  </footer>
+  <script src="assets/js/toogle.js"></script>
 </body>
+
 </html>
