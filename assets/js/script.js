@@ -3,77 +3,13 @@ let b = [];
 
 function insert_bin(num){
     bin.push(num);
-    console.log("a");
+    list_bin();
 }
 
-function delete_bin(id){
-    bin[id]=null;
-}
 
 function list_bin(){
-    let y;
-    let o;
     let select = document.getElementById("instrucciones");
-    for(let i = 0; i < bin.length; i++){
-        y = bin[i].toString();
-        o = y;
-        y = y.charAt(0);
-        console.log(y);
-        o = o.charAt(1);
-        switch (y){
-            case "0":
-                y = "NOT";
-                break;
-            case "1":
-                y = "NAND";
-                break;
-            case "2":
-                y = "ADD";
-                break;
-            case "3":
-                y = "LDA";
-                break;
-            case "4":
-                y = "OUTA";
-                break;
-            case "5":
-                y = "OUTB";
-                break;
-            case "6":
-                y = "INA";
-                break;
-            case "7":
-                y = "RD";
-                break;
-            case "8":
-                y = "RA";
-                break;
-            case "9":
-                y = "LDRA";
-                break;
-            case "C":
-                y = "JPI";
-                break;
-            case "D":
-                y = "JPC";
-                break;
-            case "E":
-                y = "JPZ";
-                break;
-        }
-        if(bin[i]!==null){
-            document.write(`<table>
-                    <tr>
-                        <td>Nemónico</td>
-                        <td>Operando</td>
-                    </tr>
-                    <tr>
-                        <td>${y}</td>
-                        <td>${o}</td>
-                    </tr>
-                </table>`);
-        }
-    }
+    select.innerHTML=bin;
 }
 
 function hex_as_byte(){
